@@ -1,0 +1,23 @@
+{
+  "name": "patient-portal-be",
+  "version": "1.0.0",
+  "description": "API Documentation for Patient Portal",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/.bin/nodemon index.js",
+    "nigga": "./node_modules/.bin/apidoc -i routes/ -o public/"
+  },
+  "dependencies": {
+    "apidoc": "^0.17.6",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3"
+  },
+  "apidoc": {
+    "name": "Patient Portal API",
+    "title": "Patient Portal API",
+    "url": "https://patient-portal-be.herokuapp.com/"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}
