@@ -1,0 +1,194 @@
+{
+	"info": {
+		"_postman_id": "6ebe40fe-90e6-4dce-8954-b08435fa7c22",
+		"name": "PatientPortal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Specialities",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{domain}}/api/specialities",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"specialities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"test3@test.com\",\r\n  \"password\": \"qwer1234\",\r\n  \"name\": \"Test 3\",\r\n  \"nationalId\": \"12037671631\",\r\n  \"phone\": \"35001231\",\r\n  \"address\": \"Terminalgade 2, 2770 Kastrup\"\r\n}"
+				},
+				"url": {
+					"raw": "{{domain}}/api/users",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"test3@test.com\",\r\n  \"password\": \"qwer1234\"\r\n}"
+				},
+				"url": {
+					"raw": "{{domain}}/auth",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get auth user ",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMTE3MDcyYzVlNDM2MDE2ODBkMzgxZiIsImlhdCI6MTUyNzg3MTQwNiwiZXhwIjoxNTI3ODc1MDA2fQ.vhtcP2wsdrD3f-jGPgtQd6MgviSZIhXWyDEXHmVVD4ile7GarDw_guhFzaP26CzJgU47OygQ6U97RUlAdgLJxw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"test@test.com\",\r\n  \"password\": \"qwer1234\",\r\n  \"name\": \"Cristiana Man\",\r\n  \"nationalId\": \"24099549854\",\r\n  \"phone\": \"35001234\",\r\n  \"address\": \"Unnebergveien 214, 3239, SANDEFJORD\"\r\n}"
+				},
+				"url": {
+					"raw": "{{domain}}/api/users",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update auth user ",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMTE3MDcyYzVlNDM2MDE2ODBkMzgxZiIsImlhdCI6MTUyNzg3MTQwNiwiZXhwIjoxNTI3ODc1MDA2fQ.vhtcP2wsdrD3f-jGPgtQd6MgviSZIhXWyDEXHmVVD4ile7GarDw_guhFzaP26CzJgU47OygQ6U97RUlAdgLJxw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Cristiana Madnddn\"\n}"
+				},
+				"url": {
+					"raw": "{{domain}}/api/users",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete auth user ",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMTE3MDcyYzVlNDM2MDE2ODBkMzgxZiIsImlhdCI6MTUyNzg2OTU3MCwiZXhwIjoxNTI3ODczMTcwfQ.0VOvOKYxlX5r25YacWDCGQtvxHI7G4bYnpu-FL2akiCKQ9-iVUPWaiP8jw8IXCkQkwZouTf0TzE2QxGBE--d1w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"test@test.com\",\r\n  \"password\": \"qwer1234\",\r\n  \"name\": \"Cristiana Man\",\r\n  \"nationalId\": \"24099549854\",\r\n  \"phone\": \"35001234\",\r\n  \"address\": \"Unnebergveien 214, 3239, SANDEFJORD\"\r\n}"
+				},
+				"url": {
+					"raw": "{{domain}}/users",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
