@@ -1,147 +1,105 @@
 
   /**
-   * @api {get} /ingredients Get All Nigga
-   * @apiName get-all-ingredients
-   * @apiGroup Ingredients
+   * @api {get} api/specialities Get All Specialities
+   * @apiName get-all-specialities
+   * @apiGroup Specialities
    * @apiVersion 1.0.0
    *
-   * @apiDescription This request returns a list of all ingredients.
+   * @apiDescription This request returns a list of all Specialities.
    *
-   * @apiSuccess (Ingredient Fields) {String} _id Unique Mongo generated id of the ingredient.
-   * @apiSuccess (Ingredient Fields) {String} name Name of the ingredient.
-   * @apiSuccess (Ingredient Fields) {String} image URL of the ingredient.
+   * @apiSuccess (Speciality Fields) {String} _id Unique Mongo generated id of the Speciality.
+   * @apiSuccess (Speciality Fields) {String} name id of the Speciality.
    *
    * @apiSuccessExample {json} Success-Response:
    *   HTTP/1.1 200 OK
-   *   [
-   *       {
-   *           "_id": "573ec098e85f5601f611322b",
-   *           "name": "Tomato",
-   *           "image": "https://s3.eu-central-1.amazonaws.com/delish-app-uploads/tomato.jpg"
-   *       },
-   *       {
-   *           "_id": "573ec075e85f5601f611322a",
-   *           "name": "Sugar",
-   *           "image": "https://s3.eu-central-1.amazonaws.com/delish-app-uploads/sugar.jpg"
-   *       }
-   *   ]
+   *   {
+   *     "success": true,
+   *     "data": [
+   *         {
+   *             "id": "5afec038c10c3f372c71cdf2",
+   *             "name": "Acupuncturists"
+   *         },
+   *         {
+   *             "id": "5afec038c10c3f372c71cdf3",
+   *             "name": "Allergists"
+   *         },
+   *         {
+   *             "id": "5afec038c10c3f372c71cdf4",
+   *             "name": "Audiologists"
+   *         }
+   *      ]
+   *   }
    *
    * @apiError (Error 5xx) 500 Internal Server Error
-   *
    */
 
 
   /**
-   * @api {post} /ingredients Add Ingredient
-   * @apiName add-ingredient
-   * @apiGroup Ingredients
+   * @api {post} api/users Register user
+   * @apiName Register user
+   * @apiGroup Users
    * @apiVersion 1.0.0
    *
-   * @apiDescription This request creates a new ingredient using the json body provided. An _id field is generated automatically. For consistency the json should include the parameters specified below. A return Json prividing the generated _id is returned
-   *
-   * @apiParam (Requested Fields) {String} name Name of the ingredient.
-   * @apiParam (Requested Fields) {String} image URL of the ingredient.
-   *
-   * @apiParamExample {json} Post Example:
-   *   {
-   *       "name": "Olive Oil",
-   *       "image": "https://s3.eu-central-1.amazonaws.com/delish-app-uploads/olive-oil.jpg"
-   *   }
-   *
-   * @apiSuccess (Success 2xx) 201 Ingredient Created
-   * @apiSuccessExample {json} Success-Response:
-   *     HTTP/1.1 201 Created
-   *     Location : /<ObjectId>
+   * @apiParamExample {json} Request body
    *     {
-   *       "_id" : "5746d36bfa2cdf7c300bf61c",
-   *       "message": "Ingredient added"
+   *         "email": "test@test.com",
+   *         "password": "qwer1234",
+   *         "name": "Test 4",
+   *         "nationalId": "12037671637",
+   *         "phone": "35001237",
+   *         "address": "Terminalgade 2, 2770 Kastrup"
    *     }
    *
-   * @apiError (Error 4xx) 400 Bad Request <br>Wrongly formated <code>json</code> was sent.
-   * @apiError (Error 5xx) 500 Internal Server Error
-   * @apiErrorExample {json} Error-Response:
-   *   HTTP/1.1 500 Internal Server Error
-   *   {
-   *       "error": "Internal Server Error"
-   *   }
    *
-   */
+   * @apiDescription This request registers a new user.
 
-  /**
-   * @api {get} /ingredients/id Get Ingredient
-   * @apiName get-ingredient
-   * @apiGroup Ingredients
-   * @apiVersion 1.0.0
-   *
-   * @apiDescription This request returns the ingredient specified by the unique ID in the request URL
-   *
-   * @apiParam {ObjectId} id The unique identifier of the ingredient.
-   *
-   * @apiSuccess (Success 2xx) 200 OK
+   * @apiSuccess (Success 2xx) 201 User was created
    * @apiSuccessExample {json} Success-Response:
    *   HTTP/1.1 200 OK
    *   {
-   *       "_id": "573ec098e85f5601f611322b",
-   *       "name": "Cherry Tomato",
-   *       "image": "https://s3.eu-central-1.amazonaws.com/delish-app-uploads/cherry-tomato.jpg"
+   *     "success": true
    *   }
    *
-   * @apiError 404 Ingredient Not Found
-   * @apiError 400 Bad Request <br>Wrongly formated <code>id</code> was sent.
+   * @apiError (Error 4xx) 409 Internal Server Error
    * @apiError (Error 5xx) 500 Internal Server Error
+   * @apiErrorExample (Error 4xx) 409 Conflict
+   *   {
+   *       "success": false,
+   *       "error": "Conflict registering new user. User email, phone and national Id must be unique"
+   *   }
+   *
    *
    */
-
   /**
-   * @api {put} /ingredients/id Update Ingredient
-   * @apiName update-ingredient
-   * @apiGroup Ingredients
+   * @api {get} /Users Register user
+   * @apiName Register user
+   * @apiGroup user
    * @apiVersion 1.0.0
    *
-   * @apiDescription This request updates an existing ingredient using the json body provided and the _id parameter specified in the request URL. For consistency the json may include keys like in the example below.
-   *
-   * @apiParam {ObjectId} id The unique identifier of the ingredient.
-   * @apiParamExample {json} Edit Example:
-   *   {
-   *       "name": "Cherry Tomato",
-   *       "image": "https://s3.eu-central-1.amazonaws.com/delish-app-uploads/cherry-tomato.jpg"
-   *   }
-   *
-   * @apiSuccess (Success 2xx) 201 Ingredient Edited
-   *
-   * @apiSuccessExample {json} Success-Response:
-   *     HTTP/1.1 201 Created
-   *     Location : /api/ingredients/<ObjectId>
+   * @api {get} /user/:id
+   * @apiParamExample {json} Register user:
    *     {
-   *       "message": "Ingredient edited"
+   *         "email": "test@test.com",
+   *         "password": "qwer1234",
+   *         "name": "Test 4",
+   *         "nationalId": "12037671637",
+   *         "phone": "35001237",
+   *         "address": "Terminalgade 2, 2770 Kastrup"
    *     }
    *
-   * @apiError (Error 4xx) 404 Ingredient not Found
-   * @apiError (Error 4xx) 400 Bad Request <br>Wrongly formated <code>json</code> was sent.
-   * @apiError (Error 5xx) 500 Internal Server Error
    *
-   */
-
-  /**
-   * @api {delete} /ingredients/id Delete Ingredient
-   * @apiName delete-ingredient
-   * @apiGroup Ingredients
-   * @apiVersion 1.0.0
+   * @apiDescription This returns success or failure and applies a new user is success.
    *
-   * @apiDescription This request deletes an existing ingredient with the _id parameter specified in the request URL.
-   * @apiParam {ObjectId} id The unique identifier of the ingredient.
-   *
-   * @apiSuccess (Success 2xx) 200 Successful Request
+   * @apiSuccess (Ingredient Fields) {String} _id Unique Mongo generated id of the Speciality.
+   * @apiSuccess (Ingredient Fields) {String} name id of the Speciality.
    *
    * @apiSuccessExample {json} Success-Response:
-   *      HTTP/1.1 204 No Content
-   *      {
-   *          "message" : "Ingredient deleted"
-   *      }
-   *
-   * @apiError 404 Ingredient Not Found
-   * @apiError 400 Bad Request <br>A wrong formated <code>id</code> was sent
+   *   HTTP/1.1 200 OK
+   *   {
+   *     "success": true
+   *   }
    *
    * @apiError (Error 5xx) 500 Internal Server Error
+   *
    *
    */
